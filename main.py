@@ -30,7 +30,7 @@ for i, row in df.iterrows():
         row["pct_imp_comb"]
     ]
 
-    labels = ["Combustible", "IVA", "Imp. Combustibles"]
+    labels = ["Combustible", "IVA", "ICL/IDC"]
 
     ax.pie(valores, labels=labels, autopct="%1.1f%%")
     ax.set_title(f'{row["fecha"]} - {row["combustible"]}')
@@ -47,7 +47,7 @@ ax.plot(df["fecha"], df["imp_comb_x_litro"], marker="o", label="Imp. Combustible
 
 ax.set_xlabel("Fecha")
 ax.set_ylabel("ARS")
-ax.set_title("Evolución Precio vs Impuesto Combustible")
+ax.set_title("Evolución Precio vs ICL/IDC")
 
 ax.legend()
 ax.grid(True)
@@ -60,7 +60,7 @@ df["imp_idx"] = df["imp_comb_x_litro"] / df["imp_comb_x_litro"].iloc[0] * 100
 fig, ax = plt.subplots()
 
 ax.plot(df["fecha"], df["precio_idx"], marker="o", label="Precio (base 100)")
-ax.plot(df["fecha"], df["imp_idx"], marker="o", label="Impuesto (base 100)")
+ax.plot(df["fecha"], df["imp_idx"], marker="o", label="ICL/IDC (base 100)")
 
 ax.set_title("Evolución relativa (base 100)")
 ax.legend()
